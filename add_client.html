@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Client</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Add New Client</h1>
+    </header>
+
+    <main>
+        <form method="POST" action="{{ url_for('add_client') }}">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div>
+                <label for="permis_type">Permis Type:</label>
+                <select id="permis_type" name="permis_type" required>
+                    <option value="A">A (Motorcycles)</option>
+                    <option value="B">B (Cars)</option>
+                    <option value="C">C (Trucks)</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div>
+                <label for="is_admin">Is Admin:</label>
+                <input type="checkbox" name="is_admin" id="is_admin">
+            </div>
+            <div>
+                <button type="submit">Add Client</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Auto-Ecole. All rights reserved.</p>
+    </footer>
+</body>
+</html>

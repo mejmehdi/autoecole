@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Take Test</title>
+</head>
+<body>
+    <h1>Take Test</h1>
+
+    <form action="{{ url_for('take_test', client_id=client.id) }}" method="POST">
+        <!-- Question 1 -->
+        <h2>{{ test.question_1 }}</h2>
+        <input type="radio" id="answer_1_a" name="answer_1" value="{{ test.correct_answer_1 }}" required>
+        <label for="answer_1_a">{{ test.correct_answer_1 }}</label><br>
+        <input type="radio" id="answer_1_b" name="answer_1" value="{{ test.false_answer_1 }}">
+        <label for="answer_1_b">{{ test.false_answer_1 }}</label><br><br>
+
+        <!-- Question 2 -->
+        <h2>{{ test.question_2 }}</h2>
+        <input type="radio" id="answer_2_a" name="answer_2" value="{{ test.correct_answer_2 }}" required>
+        <label for="answer_2_a">{{ test.correct_answer_2 }}</label><br>
+        <input type="radio" id="answer_2_b" name="answer_2" value="{{ test.false_answer_2 }}">
+        <label for="answer_2_b">{{ test.false_answer_2 }}</label><br><br>
+
+        <!-- Question 3 -->
+        <h2>{{ test.question_3 }}</h2>
+        <input type="radio" id="answer_3_a" name="answer_3" value="{{ test.correct_answer_3 }}" required>
+        <label for="answer_3_a">{{ test.correct_answer_3 }}</label><br>
+        <input type="radio" id="answer_3_b" name="answer_3" value="{{ test.false_answer_3 }}">
+        <label for="answer_3_b">{{ test.false_answer_3 }}</label><br><br>
+
+        <button type="submit">Submit Test</button>
+    </form>
+</body>
+</html>

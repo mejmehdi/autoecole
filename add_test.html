@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Add Test</title>
+</head>
+<body>
+    <h1>Add Test for Client ID: {{ client_id }}</h1>
+
+    <form action="{{ url_for('add_test', client_id=client_id) }}" method="POST">
+        <label for="date">Test Date:</label>
+        <input type="date" id="date" name="date" required>
+        <br><br>
+
+        <!-- Question 1 -->
+        <h2>Question 1</h2>
+        <label for="question_1">Question:</label>
+        <input type="text" id="question_1" name="question_1" required>
+        <br>
+        <label for="correct_answer_1">Correct Answer:</label>
+        <input type="text" id="correct_answer_1" name="correct_answer_1" required>
+        <br>
+        <label for="false_answer_1">Incorrect Answer:</label>
+        <input type="text" id="false_answer_1" name="false_answer_1" required>
+        <br><br>
+
+        <!-- Question 2 -->
+        <h2>Question 2</h2>
+        <label for="question_2">Question:</label>
+        <input type="text" id="question_2" name="question_2" required>
+        <br>
+        <label for="correct_answer_2">Correct Answer:</label>
+        <input type="text" id="correct_answer_2" name="correct_answer_2" required>
+        <br>
+        <label for="false_answer_2">Incorrect Answer:</label>
+        <input type="text" id="false_answer_2" name="false_answer_2" required>
+        <br><br>
+
+        <!-- Question 3 -->
+        <h2>Question 3</h2>
+        <label for="question_3">Question:</label>
+        <input type="text" id="question_3" name="question_3" required>
+        <br>
+        <label for="correct_answer_3">Correct Answer:</label>
+        <input type="text" id="correct_answer_3" name="correct_answer_3" required>
+        <br>
+        <label for="false_answer_3">Incorrect Answer:</label>
+        <input type="text" id="false_answer_3" name="false_answer_3" required>
+        <br><br>
+
+        <button type="submit">Add Test</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('client_detail', client_id=client_id) }}">Back to Client Detail</a>
+</body>
+</html>

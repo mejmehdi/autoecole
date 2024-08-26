@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Client Dashboard - Auto-Ecole</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ client.name }}</h1>
+    </header>
+
+    <main>
+        <h2>Your Lessons</h2>
+        <ul>
+            {% for lesson in client.lessons %}
+                <li>{{ lesson.description }} on {{ lesson.date }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Your Tests</h2>
+        <ul>
+            {% for test in client.tests %}
+                <li>
+                    {{ test.description }} on {{ test.date }} - 
+                    {% if test.passed %}
+                        Passed
+                    {% else %}
+                        Failed
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Button to take a new test -->
+        <div class="test-button">
+            <a href="{{ url_for('take_test', client_id=client.id) }}">
+                <button type="button">Take a Test</button>
+            </a>
+        </div>
+
+        <!-- Buttons for navigation -->
+        <div class="navigation-buttons">
+            <a href="javascript:history.back()">Previous Page</a>
+            <a href="{{ url_for('home') }}">Home Page</a>
+        </div>
+    </main>
+
+    <footer>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </footer>
+</body>
+</html>

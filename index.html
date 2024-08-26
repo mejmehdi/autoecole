@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Auto-Ecole</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Auto-Ecole</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('services') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                {% if 'client_id' in session %}
+                    {% if session.get('is_admin') %}
+                        <li><a href="{{ url_for('admin') }}">Admin Dashboard</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('client_dashboard') }}">Dashboard</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>About Auto-Ecole</h2>
+            <p>Welcome to Auto-Ecole, your trusted driving school. We offer a range of driving lessons and tests to help you become a safe and skilled driver.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Auto-Ecole. All rights reserved.</p>
+    </footer>
+</body>
+</html>

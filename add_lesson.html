@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Lesson</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Add New Lesson</h1>
+    </header>
+
+    <main>
+        <form action="{{ url_for('add_lesson', client_id=client_id) }}" method="POST">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Add Lesson</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Auto-Ecole. All rights reserved.</p>
+    </footer>
+</body>
+</html>

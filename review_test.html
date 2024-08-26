@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Review Test</title>
+</head>
+<body>
+    <h1>Review Test for Client {{ test.client.name }}</h1>
+
+    <form action="{{ url_for('review_test', test_id=test.id) }}" method="POST">
+
+        <h2>Question 1</h2>
+        <p>{{ test.question_1 }}</p>
+        <p>Client's Answer: {{ test.answer_1 }}</p>
+        <p>Correct Answer: {{ test.correct_answer_1 }}</p>
+
+        <h2>Question 2</h2>
+        <p>{{ test.question_2 }}</p>
+        <p>Client's Answer: {{ test.answer_2 }}</p>
+        <p>Correct Answer: {{ test.correct_answer_2 }}</p>
+
+        <h2>Question 3</h2>
+        <p>{{ test.question_3 }}</p>
+        <p>Client's Answer: {{ test.answer_3 }}</p>
+        <p>Correct Answer: {{ test.correct_answer_3 }}</p>
+
+        <label for="passed">Mark as Passed:</label>
+        <input type="checkbox" id="passed" name="passed" {{ 'checked' if test.passed else '' }}>
+        <br><br>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('admin') }}">Back to Admin</a>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Client Detail</title>
+</head>
+<body>
+    <h1>Client Detail for {{ client.name }}</h1>
+
+    <h2>Lessons</h2>
+    <ul>
+        {% for lesson in client.lessons %}
+            <li>
+                {{ lesson.description }} - {{ lesson.date }}
+                <form action="{{ url_for('delete_lesson', client_id=client.id, lesson_id=lesson.id) }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Add a New Lesson</h3>
+    <form action="{{ url_for('add_lesson', client_id=client.id) }}" method="GET">
+        <button type="submit">Go to Add Lesson Page</button>
+    </form>
+
+    <h2>Tests</h2>
+    <ul>
+        {% for test in client.tests %}
+            <li>
+                Test Date: {{ test.date }} - Reviewed: {{ 'Yes' if test.reviewed else 'No' }}
+                {% if not test.reviewed %}
+                    <form action="{{ url_for('review_test', test_id=test.id) }}" method="GET" style="display:inline;">
+                        <button type="submit">Review Test</button>
+                    </form>
+                {% endif %}
+                <form action="{{ url_for('delete_test', client_id=client.id, test_id=test.id) }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Add a New Test</h3>
+    <form action="{{ url_for('add_test', client_id=client.id) }}" method="GET">
+        <button type="submit">Go to Add Test Page</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('admin') }}">Back to Admin Dashboard</a>
+</body>
+</html>
